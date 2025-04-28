@@ -1,0 +1,32 @@
+
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-3" [routerLink]="product._id" *ngFor="let product of prodArr">
+         <div class="Card1">
+           <div clas="card h-100 border-0">
+              <div class="card-body">
+                <div class="row">
+                    <div class="col-12">
+                        <div class="imgContainer text-center">
+                            <img [src]="product.images" [alt]="product" [title]="product">
+                        </div>
+                    </div>
+                    
+                </div>
+                <div class="row">
+                    <div class="col-12">
+                        <h5 class="category mt-4">{{product.category}}</h5>
+                        <h4 class="mb-2 title text-primary">{{product.title}}</h4>
+                        <h2 class=" price text-dark mt-0">
+                            <small>{{product.total_price}}</small>
+                        </h2>
+                        <!--<button (click)="onProductload()" class="btn btn-info">Go to product</button>-->
+                    </div>
+                </div>
+                
+              </div>
+           </div>
+         </div> 
+        </div>
+    </div>
+</div>
