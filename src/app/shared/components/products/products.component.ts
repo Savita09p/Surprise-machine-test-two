@@ -9,6 +9,8 @@ import { Iproduct } from '../../model/product';
 })
 export class ProductsComponent implements OnInit {
   prodArr !: Array<Iproduct>
+  isImg: any = null;
+  isLike: boolean = false;
   constructor(
     private _productService : ProductService
   ) { }
@@ -19,6 +21,10 @@ export class ProductsComponent implements OnInit {
       this.prodArr = res;
       console.log(res);
     });
-  }
 
+  }
+  visibilility(event: Event) {
+    event.stopPropagation();
+    this.isLike = !this.isLike;
+  }
 }

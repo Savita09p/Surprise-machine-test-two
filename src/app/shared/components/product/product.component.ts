@@ -14,6 +14,8 @@ export class ProductComponent implements OnInit {
   prodArr !: Array<Iproduct>
   prodId!: string;
   prodObj!: Iproduct;
+  selectedImg !: string
+
   isDark = false;
   toggleColor() : void{
     this.isDark = ! this.isDark;
@@ -38,8 +40,13 @@ export class ProductComponent implements OnInit {
     this.prodId = this._route.snapshot.params['_id'];
     this._productService.getobj(this.prodId).subscribe((res) => {
       this.prodObj = res;
-      //this.selectedImage = this.prodObj.images[0];
+      this.selectedImg = this.prodObj.images[0];
     })
+  }
+  
+
+  onimgChange(img: string) {
+    this.selectedImg = img;
   }
 
 }

@@ -1,19 +1,42 @@
-<p>product works!</p>
+
 <div class="container-fluid">
     <div class="row">
-        <div class="col-12 mb-4 productCard" *ngFor="let product of prodArr">
+        <div class="col-12 mb-4 productCard">
             <div class="card">
                 <div class="card-body">
                     <div class="row">
                         <div class="col-md-5">
+                          <!--  <div class="imgContainer" *ngFor="let product of prodObj.images">
+                                
+                                <img [src]="selectedImg" [alt]="product" [title]="product">
+                            </div>-->
                             <div class="imgContainer">
-                                <img [src]="product.images" [alt]="product" [title]="product">
+                                <img
+                                 [src]="selectedImg"
+                                 [alt]="prodObj"
+                                 [title]="prodObj"
+                                />
                             </div>
+
+                            <div class="row">
+                                <div class="col-md-12 px-auto">
+                                  <div class="slideImg" *ngFor="let product of prodObj.images">
+                                    <li>
+                                      <img
+                                        (click)="onimgChange(product)"
+                                        [src]="product"
+                                        [alt]="product"
+                                        [title]="product"
+                                      />
+                                    </li>
+                                  </div>
+                                </div>
+                              </div>
                             <div>
                               <mat-tab-group>
-                                    <mat-tab label="Product Details"> {{product.product_details}} </mat-tab>
-                                    <mat-tab label="Specification"> {{product.product_specifications}} </mat-tab>
-                                    <mat-tab label="Return Policy"> {{product.return_policy}} </mat-tab>
+                                    <mat-tab label="Product Details"> {{prodObj.product_details}} </mat-tab>
+                                    <mat-tab label="Specification"> {{prodObj.product_specifications}} </mat-tab>
+                                    <mat-tab label="Return Policy"> {{prodObj.return_policy}} </mat-tab>
                                 </mat-tab-group>
                                 <ng-template mat-tab-label>
                                     <mat-icon class="example-tab-icon">thumb_up</mat-icon>
@@ -24,7 +47,18 @@
                         <div class="col-md-6 offset-md-1 infoContainer">
                             <span>Categories : <span style="color: blue;">Consumer Electronics</span></span>
                             <h2 class="text-capitalize elite">elite gourmet EKT1001B electric BPA-Free glass kettle,cordless 360&deg; base </h2>
-                            <h4 class="price">{{product.total_price}}</h4>
+                            <div class="rate mb-4">
+                                <div>
+                                    Review ({{prodObj.reviews_count}})
+                                </div>
+                                <div class="solid">
+                                    Solid: 349
+                                </div>
+                                <div class="view text-info">
+                                    View shop
+                                </div>
+                            </div>
+                            <h4 class="price">{{prodObj.total_price}}</h4>
                             <div>
                                 <ul class="list-unstyled brandInfo mt-4">
                                     <li class="brandList">
@@ -48,12 +82,12 @@
                             <hr>
                             <h2>About this item</h2>
                             <ul class="list-group ml-3 mb-2">
-                                <li class="list-group-items description" *ngFor="let description of product.product_description">
+                                <li class="list-group-items description" *ngFor="let description of prodObj.product_description">
                                         {{description}}
                                 </li>
                             </ul>
                             <div class="InfoBox">
-                               <h5 class="mb-2">{{product.total_price}}</h5>
+                               <h5 class="mb-2">{{prodObj.total_price}}</h5>
                                <div>
                                  <i class="fa-solid fa-truck ml-3 mt-2 mr-2"></i>
                                  <span>Free Shopping</span>
@@ -87,7 +121,7 @@
                             <button class="btn btn-md btn-danger mt-2 ml-3"><i class="fa-solid fa-cart-plus mr-2"></i>Add Product</button>
                             <button class="btn btn-dark mt-2 ml-3">Buy Now</button>
                             <h6 class="quantity ml-3 mt-2">Details</h6>
-                            <div class="details mt-0 ml-3" *ngFor="let tag of product.tags">{{tag}}</div>
+                            <div class="details mt-0 ml-3" *ngFor="let tag of prodObj.tags">{{tag}}</div>
                         </div>
                     </div>
                 </div>
